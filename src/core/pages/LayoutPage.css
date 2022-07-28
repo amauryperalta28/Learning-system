@@ -20,7 +20,19 @@
     background: #fff;
   }
 
-  .layout-father {
+  .layout-container {
     height: 100vh;
     width: 100vw;
   }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+  }
+
+ .header-title {
+    position: absolute;
+    left: 50%;
+    font-size: 30px;
+    font-weight: bold;
+ }
