@@ -63,7 +63,10 @@ export const LayoutPage = () => {
             <Layout className="site-layout">
                 <Header className="site-layout-background" >
                     <div className="header">
-                        <div className='header-title'>Training Portal</div>
+                        <div className="header-title">Training Portal</div>
+                        <div className="user-content">
+                            <img className="user-miniature" src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg" alt="User avatar" />
+                        </div>
                     </div>
 
                 </Header>
