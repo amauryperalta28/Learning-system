@@ -1,6 +1,7 @@
+import { FeaturedTrainingList } from "../../shared/FeaturedTrainingList/FeaturedTrainingList"
 
 export const HomePage = () => {
     return (
-        <div>HomePage</div>
+        <FeaturedTrainingList/>
     )
 }
