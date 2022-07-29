@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { HomePage } from './core/pages/HomePage'
+import { HomePage } from './core/pages/HomePage/HomePage'
 import { LayoutPage } from './core/pages/LayoutPage/LayoutPage'
 
 export const AppRouter = () => {
