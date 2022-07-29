@@ -19,6 +19,7 @@ export const LayoutPage = () => {
 
     return (
         <Layout className='layout-container'>
+
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="logo" />
                 <Menu
@@ -49,18 +50,20 @@ export const LayoutPage = () => {
                     ]}
                 />
             </Sider>
+
+            <div className="sidebar-button">
+                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                    className: 'trigger',
+                    style: { position: 'relative' },
+                    onClick: () => setCollapsed(!collapsed),
+                })}
+
+            </div>
+
             <Layout className="site-layout">
-                <Header className="site-layout-background" style={{ paddingLeft: 10 }} >
+                <Header className="site-layout-background" >
                     <div className="header">
-                        <div>
-                            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                                className: 'trigger',
-                                onClick: () => setCollapsed(!collapsed),
-                            })}
-
-                        </div>
                         <div className='header-title'>Training Portal</div>
-
                     </div>
 
                 </Header>

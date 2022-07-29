@@ -1,8 +1,7 @@
-import './App.css';
-import { LayoutPage } from './core/pages/LayoutPage';
 import 'antd/dist/antd.css';
-import './index.css'
+import './App.css';
 import { AppRouter } from './AppRouter';
+import './index.css';
 const  App = () => {
   return (
     <AppRouter></AppRouter>
