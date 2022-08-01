@@ -6,10 +6,13 @@ type Props = {
 };
 export const TrainingBox = ({ training }: Props) => {
   return (
-    <div className="container course-box">
+    <div className="course-box">
       <iframe className="course-thumbnail" src={training.videoUrl} />
       <div className="course-title">
+        <a href={training.videoUrl}>
         <h3>{training.title}</h3>
+        </a>
+      
       </div>
       <div className="course-info">
         <div className="duration">

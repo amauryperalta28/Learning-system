@@ -35,7 +35,7 @@ export const FeaturedTrainingList = () => {
             <div className="row" >
                 {
                     trainings.map((training) => (
-                        <div className="col mb-5" key={training.id}>
+                        <div className="col mb-3" key={training.id}>
                             <TrainingBox  training={training} />
                         </div>
                     ))

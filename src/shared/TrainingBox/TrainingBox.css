@@ -7,6 +7,7 @@
 .course-box .course-title h3 {
     font-size: 20px;
     margin-left: 15px;
+    text-decoration: underline;
 }
 
 .course-box .course-thumbnail{
