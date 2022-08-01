@@ -20,7 +20,15 @@ export const LayoutPage = () => {
     return (
         <Layout className='layout-container'>
 
-            <Sider trigger={null} collapsible collapsed={collapsed}>
+            <Sider trigger={null}
+                collapsible
+                collapsed={collapsed}
+                breakpoint="sm"
+                onBreakpoint={broken => {
+                    console.log(broken);
+                    setCollapsed(!collapsed);
+                }}
+            >
                 <div className="logo" />
                 <Menu
                     theme="dark"
