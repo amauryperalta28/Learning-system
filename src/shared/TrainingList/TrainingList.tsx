@@ -1,8 +1,12 @@
 import { TrainingBox } from '../TrainingBox/TrainingBox'
-import './FeaturedTrainingList.css'
+import './TrainingList.css'
 import { Training } from '../interfaces/Training';
 
-export const FeaturedTrainingList = () => {
+export type Props = {
+    sectionName: string
+}
+
+export const TrainingList = ({sectionName}: Props) => {
     const trainings: Training[] =
         [{
             id: new Date().getTime(),
@@ -31,7 +35,7 @@ export const FeaturedTrainingList = () => {
 
     return (
         <div className="container-fluid training-list">
-            <h2>Featured</h2>
+            <h2>{sectionName}</h2>
             <div className="row" >
                 {
                     trainings.map((training) => (

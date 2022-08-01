@@ -1,7 +1,10 @@
-import { FeaturedTrainingList } from "../../shared/FeaturedTrainingList/FeaturedTrainingList"
+import { TrainingList as TrainingList } from "../../shared/TrainingList/TrainingList"
 
 export const HomePage = () => {
     return (
-        <FeaturedTrainingList/>
+        <>
+            <TrainingList sectionName="Featured" />
+        </>
+
     )
 }
