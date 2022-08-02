@@ -21,9 +21,9 @@ body, html {
 }
 
 .course-box {
-  width: 420px;
-  height: 345px; 
-  margin-bottom: 30px;
-  margin-right: 50px;
-  margin-left: 10px;
+  width: 26.25rem;
+  height: 21.563rem; 
+  margin-bottom: 1.875rem;
+  margin-right: 3.125rem;
+  margin-left: 0.625rem;
 }

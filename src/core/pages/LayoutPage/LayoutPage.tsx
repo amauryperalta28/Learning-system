@@ -15,7 +15,7 @@ import './LayoutPage.css';
 const { Header, Sider, Content } = Layout;
 
 export const LayoutPage = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
 
     return (
         <Layout className='layout-container'>

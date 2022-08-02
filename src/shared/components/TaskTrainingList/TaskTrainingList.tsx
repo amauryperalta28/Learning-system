@@ -19,7 +19,7 @@ export const TaskTrainingList = () => {
         {
             id: new Date().getTime() + 2,
             title: 'Intro to Power apps',
-            dueDate: new Date(new Date().setHours(-24)),
+            dueDate: new Date(new Date()),
             isCompleted: false,
         }
 

@@ -36,7 +36,7 @@ export const DueDateComponent = ({ dueDate }: Props) => {
     return (
 
         <div className={`due-date-box ${getExpirationClass()} d-flex justify-content-center align-items-center`}>
-            <CalendarOutlined style={{ fontSize: '20px' }} />
+            <CalendarOutlined style={{ fontSize: '1.25rem', marginRight:'0.313rem' }} />
             <span>{dueMonth}/{dueDay}</span>
         </div>
     )

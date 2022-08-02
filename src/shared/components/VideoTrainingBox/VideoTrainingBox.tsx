@@ -9,7 +9,7 @@ export const VideoTrainingBox = ({ training }: Props) => {
     <div className="course-box">
       <iframe className="course-thumbnail" src={training.videoUrl} />
       <div className="course-title">
-        <a href={training.videoUrl}>
+        <a href={training.videoUrl} target="_blank">
         <h3>{training.title}</h3>
         </a>
       

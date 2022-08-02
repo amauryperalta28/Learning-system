@@ -1,21 +1,21 @@
 .course-box .course-title h3 {
-    font-size: 20px;
-    margin-left: 15px;
+    font-size: 1.25rem;
+    margin-left: 0.938rem;
     text-decoration: underline;
 }
 
 .course-box .course-thumbnail{
-    width: 500px;
-    height: 300px; 
+    width: 31.25rem;
+    height: 18.75rem; 
 }
 
 .course-box .course-info p{
-  font-size: 20px
+  font-size: 1.25rem
 }
 
 .course-box .course-info {
     display: flex;
     justify-content: space-between;
-    margin-left: 10px;
-    margin-right: 40px;
+    margin-left: 0.625rem;
+    margin-right: 2.5rem;
 }
