@@ -1,6 +1,7 @@
 import { Space } from "antd";
 import Tabs from "antd/lib/tabs"
-import { TrainingList as TrainingList } from "../../shared/TrainingList/TrainingList"
+import { TaskTrainingList } from "../../shared/components";
+import { VideoTrainingList as VideoTrainingList } from "../../shared/components/VideoTrainingList/VideoTrainingList"
 
 const { TabPane } = Tabs;
 
@@ -9,19 +10,17 @@ export const HomePage = () => {
         <>
             <div className="container-fluid">
                 <div className="row">
-                    <TrainingList sectionName="Featured" />
+                    <VideoTrainingList sectionName="Featured" />
 
                 </div>
 
                 <div className="row">
-
-
-                    <Tabs className="mt-5" defaultActiveKey="1" size="large">
+                    <Tabs tabBarStyle={{ fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif" }} className="mt-5" defaultActiveKey="1" size="large">
                         <TabPane tab="TASKS" key="1">
-                            Tasks
+                            <TaskTrainingList />
                         </TabPane>
                         <TabPane tab="DISCOVER" key="2">
-                            Discover
+                            <VideoTrainingList />
                         </TabPane>
                     </Tabs>
                 </div>

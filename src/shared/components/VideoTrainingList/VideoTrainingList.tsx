@@ -1,13 +1,13 @@
-import { TrainingBox } from '../TrainingBox/TrainingBox'
-import './TrainingList.css'
-import { Training } from '../interfaces/Training';
+import { VideoTrainingBox } from '../VideoTrainingBox/VideoTrainingBox'
+import './VideoTrainingList.css'
+import { VideoTraining } from '../../interfaces/VideoTraining';
 
 export type Props = {
-    sectionName: string
+    sectionName?: string
 }
 
-export const TrainingList = ({sectionName}: Props) => {
-    const trainings: Training[] =
+export const VideoTrainingList = ({sectionName}: Props) => {
+    const trainings: VideoTraining[] =
         [{
             id: new Date().getTime(),
             title: 'Intro to Power apps',
@@ -35,12 +35,12 @@ export const TrainingList = ({sectionName}: Props) => {
 
     return (
         <div className="container-fluid training-list">
-            <h2>{sectionName}</h2>
+            { sectionName && <h2>{sectionName}</h2>} 
             <div className="row" >
                 {
                     trainings.map((training) => (
                         <div className="col mb-3" key={training.id}>
-                            <TrainingBox  training={training} />
+                            <VideoTrainingBox  training={training} />
                         </div>
                     ))
                 }

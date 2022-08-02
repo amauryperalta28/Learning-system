@@ -1,0 +1,14 @@
+.due-date-box {
+ width: 5rem;
+ height: 1.875rem;
+}
+
+ .expired{
+   background-color: #b90d0d;
+   color: white;
+}
+
+.on-time {
+    background-color: white;
+    color: black;
+}

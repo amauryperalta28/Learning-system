@@ -1,9 +1,3 @@
-.course-box {
-    width: 420px;
-    height: 345px; 
-    margin-bottom: 30px;
-}
-
 .course-box .course-title h3 {
     font-size: 20px;
     margin-left: 15px;
@@ -11,8 +5,8 @@
 }
 
 .course-box .course-thumbnail{
-    width: 420px;
-    height: 345px; 
+    width: 500px;
+    height: 300px; 
 }
 
 .course-box .course-info p{

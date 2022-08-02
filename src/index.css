@@ -15,9 +15,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 body, html {
   height: 100vh;
   width: 100vw;
 }
 
+.course-box {
+  width: 420px;
+  height: 345px; 
+  margin-bottom: 30px;
+  margin-right: 50px;
+  margin-left: 10px;
+}

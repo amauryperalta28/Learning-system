@@ -1,10 +1,10 @@
-import { Training } from '../interfaces/Training';
-import './TrainingBox.css';
+import { VideoTraining } from '../../interfaces/VideoTraining';
+import './VideoTrainingBox.css';
 
 type Props = {
-  training: Training;
+  training: VideoTraining;
 };
-export const TrainingBox = ({ training }: Props) => {
+export const VideoTrainingBox = ({ training }: Props) => {
   return (
     <div className="course-box">
       <iframe className="course-thumbnail" src={training.videoUrl} />
