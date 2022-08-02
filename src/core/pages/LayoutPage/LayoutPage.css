@@ -29,11 +29,11 @@
   .header {
     display: flex;
     flex-direction: row;
+    width: 100%;
   }
 
  .header-title {
-    position: absolute;
-    left: 50%;
+    width: 100%;
     font-size: 25px;
     font-weight: bold;
  }
@@ -59,8 +59,8 @@
   margin-top: 10px;
   align-items: center;
 
- width: 100%;
- height: 100%;
+  width: 10%;
+  height: 100%;
  }
 
  .user-content .user-miniature{
@@ -70,3 +70,29 @@
   height: 2.5rem;
   border-radius: 1.25rem;
  }
+
+ @media only screen and (max-width: 768px) {
+  .sidebar-button{
+    top: 15px;
+    left: 20px;
+    position: relative;
+    border-radius: 20px;
+    background-color: #f0f2f5;
+    height: 35px;
+    width: 35px;
+  }
+
+}
+
+@media only screen and (max-width: 400px){
+  .header-title {
+    font-size: 20px;
+ }
+}
+
+@media only screen and (max-width: 320px){
+  .header {
+    display: none;
+
+ }
+}

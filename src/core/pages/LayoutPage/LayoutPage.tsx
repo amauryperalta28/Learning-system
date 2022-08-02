@@ -6,28 +6,42 @@ import {
     SearchOutlined,
     UnorderedListOutlined
 } from '@ant-design/icons';
-import Layout from 'antd/lib/layout';
+import AntdLayout from 'antd/lib/layout';
+import { Content, Header } from 'antd/lib/layout/layout';
+import Sider from 'antd/lib/layout/Sider';
 import Menu from 'antd/lib/menu';
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import './LayoutPage.css';
 
-const { Header, Sider, Content } = Layout;
+// const { Header, Sider, Content } = Layout;
+type CollapseWidth = string | undefined;
 
 export const LayoutPage = () => {
     const [collapsed, setCollapsed] = useState(true);
+    const [collapsedWidth, setCollapsedWidth] = useState<CollapseWidth>(undefined)
+
+    const onBreakPoint = (crossBrakePoint: boolean) =>{
+        console.log(crossBrakePoint);
+        setCollapsed(crossBrakePoint);
+
+        if(crossBrakePoint){
+            setCollapsedWidth('0px');
+        }else {
+            setCollapsedWidth(undefined);
+        }
+    }
 
     return (
-        <Layout className='layout-container'>
+        <AntdLayout className='layout-container'>
 
             <Sider trigger={null}
                 collapsible
                 collapsed={collapsed}
-                breakpoint="sm"
-                onBreakpoint={broken => {
-                    console.log(broken);
-                    setCollapsed(!collapsed);
-                }}
+                breakpoint="md"
+                onBreakpoint={onBreakPoint}
+
+                collapsedWidth={collapsedWidth}
             >
                 <div className="logo" />
                 <Menu
@@ -68,10 +82,10 @@ export const LayoutPage = () => {
 
             </div>
 
-            <Layout className="site-layout">
+            <AntdLayout className="site-layout">
                 <Header className="site-layout-background" >
                     <div className="header">
-                        <div className="header-title">Training Portal</div>
+                        <div className="header-title d-flex justify-content-center">Training Portal</div>
                         <div className="user-content">
                             <img className="user-miniature" src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg" alt="User avatar" />
                         </div>
@@ -83,15 +97,15 @@ export const LayoutPage = () => {
                     style={{
                         margin: '24px 16px',
                         padding: 24,
-                        minHeight: 280,
+                        minHeight: 600,
                         maxHeight: '100vh',
                         overflow: 'auto'
                     }}
                 >
                     <Outlet />
                 </Content>
-            </Layout>
-        </Layout>
+            </AntdLayout>
+        </AntdLayout>
     );
 
 };
