@@ -6,15 +6,13 @@ import {
     SearchOutlined,
     UnorderedListOutlined
 } from '@ant-design/icons';
-import AntdLayout from 'antd/lib/layout';
-import { Content, Header } from 'antd/lib/layout/layout';
-import Sider from 'antd/lib/layout/Sider';
+import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import './LayoutPage.css';
 
-// const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 type CollapseWidth = string | undefined;
 
 export const LayoutPage = () => {
@@ -33,7 +31,7 @@ export const LayoutPage = () => {
     }
 
     return (
-        <AntdLayout className='layout-container'>
+        <Layout className='layout-container' style={{maxHeight: '100vh'}}>
 
             <Sider trigger={null}
                 collapsible
@@ -82,8 +80,8 @@ export const LayoutPage = () => {
 
             </div>
 
-            <AntdLayout className="site-layout">
-                <Header className="site-layout-background" >
+            <Layout className="site-layout">
+                <Header className="site-layout-background"  >
                     <div className="header">
                         <div className="header-title d-flex justify-content-center">Training Portal</div>
                         <div className="user-content">
@@ -95,17 +93,18 @@ export const LayoutPage = () => {
                 <Content
                     className="site-layout-background"
                     style={{
-                        margin: '24px 16px',
+                        margin: '24px 0px',
                         padding: 24,
-                        minHeight: 600,
+                        minHeight: 300,
                         maxHeight: '100vh',
-                        overflow: 'auto'
+                        overflow: 'auto',
+                        marginLeft: 0
                     }}
                 >
                     <Outlet />
                 </Content>
-            </AntdLayout>
-        </AntdLayout>
+            </Layout>
+        </Layout>
     );
 
 };
