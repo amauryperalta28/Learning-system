@@ -44,16 +44,6 @@
     font-weight: bold;
  }
 
- .sidebar-button{
-    top: 26px;
-    left: -20px;
-    position: relative;
-    border-radius: 20px;
-    background-color: #f0f2f5;
-    height: 35px;
-    width: 35px;
- }
-
  .trigger{
   margin: 10px;
 
