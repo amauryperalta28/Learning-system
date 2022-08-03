@@ -1,4 +1,6 @@
 import {
+    CaretLeftOutlined,
+    CaretRightOutlined,
     HomeOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -33,12 +35,12 @@ export const LayoutPage = () => {
     return (
         <Layout className='layout-container' style={{maxHeight: '100vh'}}>
 
-            <Sider trigger={null}
+            <Sider 
                 collapsible
                 collapsed={collapsed}
                 breakpoint="md"
                 onBreakpoint={onBreakPoint}
-
+                onCollapse={(value) => setCollapsed(value)}
                 collapsedWidth={collapsedWidth}
             >
                 <div className="logo" />
@@ -66,19 +68,11 @@ export const LayoutPage = () => {
                             key: '4',
                             icon: <PlusOutlined />,
                             label: 'New',
-                        },
+                        }
+                        
                     ]}
                 />
             </Sider>
-
-            <div className="sidebar-button">
-                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                    className: 'trigger',
-                    style: { position: 'relative' },
-                    onClick: () => setCollapsed(!collapsed),
-                })}
-
-            </div>
 
             <Layout className="site-layout">
                 <Header className="site-layout-background"  >
@@ -93,7 +87,7 @@ export const LayoutPage = () => {
                 <Content
                     className="site-layout-background"
                     style={{
-                        margin: '24px 0px',
+                        margin: '24px 20px',
                         padding: 24,
                         minHeight: 300,
                         maxHeight: '100vh',
