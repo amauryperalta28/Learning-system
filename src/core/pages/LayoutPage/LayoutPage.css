@@ -67,28 +67,17 @@
   border-radius: 1.25rem;
  }
 
- @media only screen and (max-width: 768px) {
-  .sidebar-button{
-    top: 15px;
-    left: 20px;
-    position: relative;
-    border-radius: 20px;
-    background-color: #f0f2f5;
-    height: 35px;
-    width: 35px;
-  }
-
-}
-
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 500px){
   .header-title {
     font-size: 20px;
+    word-wrap: visible;
  }
 }
 
 @media only screen and (max-width: 320px){
   .header {
     display: none;
+
 
  }
 }

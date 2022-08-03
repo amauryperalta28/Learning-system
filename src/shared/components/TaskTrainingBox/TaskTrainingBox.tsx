@@ -11,7 +11,7 @@ export type Props = {
 export const TaskTrainingBox = ({ training }: Props) => {
   return (
 
-    <Card style={{ width: "500px" }} >
+    <Card style={{ width: "400px" }} >
       <div className="course-title">
         <h3>{training.title}</h3>
       </div>
