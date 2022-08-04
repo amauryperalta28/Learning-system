@@ -17,7 +17,7 @@ export class TasksManager {
     return this.getInstance();
   }
 
-  getTasks(): TaskTraining[] {
+  getTasks(): Promise<TaskTraining[]> {
     return this.taskRepository.getTasks();
   }
 }

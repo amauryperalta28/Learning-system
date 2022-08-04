@@ -7,19 +7,15 @@ import { TaskTraining } from '../../interfaces/TaskTraining';
 
 export const useTaskTrainingList = () => {
   const { taskManager } = useContext<AppProviderDeps>(AppProviderContext);
-  const [tasksTrainings, setTasksTraining] = useState<Array<TaskTraining>>([])
-
-  const getTaskTrainings = (): TaskTraining[] => {
-    return taskManager.getTasks();
-  };
+  const [tasksTrainings, setTasksTraining] = useState<Array<TaskTraining>>([]);
 
   useEffect(() => {
-   setTasksTraining(taskManager.getTasks()) 
-  }, [])
-  
+    taskManager.getTasks().then((result: TaskTraining[]) => {
+      setTasksTraining(result);
+    });
+  }, []);
 
   return {
     tasksTrainings,
-    getTaskTrainings,
   };
 };

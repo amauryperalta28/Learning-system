@@ -2,7 +2,7 @@ import { TaskRepositoryContract } from '../contracts/TasksRepositoryContract';
 import { TaskTraining } from '../interfaces';
 
 export class TaskRepository implements TaskRepositoryContract {
-  getTasks(): TaskTraining[] {
+  getTasks(): Promise<TaskTraining[]> {
     const trainings: TaskTraining[] = [
       {
         id: new Date().getTime(),
@@ -24,6 +24,6 @@ export class TaskRepository implements TaskRepositoryContract {
       },
     ];
 
-    return trainings;
+    return Promise.resolve(trainings);
   }
 }
