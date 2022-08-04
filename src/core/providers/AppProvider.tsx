@@ -1,13 +1,16 @@
-import { TasksManager } from '../../shared/managers/TasksManager';
+import { TasksManager, VideoTrainingManager } from '../../shared/managers';
 import { TaskRepository } from '../../shared/repositories';
 import { createContext, useMemo } from 'react';
+import { VideoTrainingRepository } from '../../shared/repositories/VideoTrainingRepository';
 
 export interface AppProviderDeps {
   taskManager: TasksManager;
+  videoTrainingManager: VideoTrainingManager;
 }
 
 const initialDeps: AppProviderDeps = {
   taskManager: TasksManager.build(new TaskRepository()),
+  videoTrainingManager: VideoTrainingManager.build(new VideoTrainingRepository()),
 };
 
 export const AppProviderContext = createContext<AppProviderDeps>(initialDeps);
