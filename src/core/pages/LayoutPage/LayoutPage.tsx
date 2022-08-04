@@ -85,14 +85,14 @@ export const LayoutPage = () => {
 
                 </Header>
                 <Content
-                    className="site-layout-background"
+                    className="site-layout-content"
                     style={{
-                        margin: '24px 20px',
+                        margin: '24px 25px',
                         padding: 24,
                         minHeight: 300,
                         maxHeight: '100vh',
                         overflow: 'auto',
-                        marginLeft: 0
+                        marginLeft: 20
                     }}
                 >
                     <Outlet />

@@ -20,10 +20,14 @@
     max-height: 100vh; 
     overflow:auto
   }
+
+  .site-layout .site-layout-content{
+    background: #fff;
+    margin-top: 20px;
+  }
   
   .site-layout .site-layout-background {
     background: #fff;
-    margin-left: -34px;
   }
 
   .layout-container {
@@ -96,5 +100,4 @@
   background: white!important;
   border-radius: 0 2px 2px 0!important;
   cursor: pointer!important;
-  /* transition: background 0.3s ease; */
 }
