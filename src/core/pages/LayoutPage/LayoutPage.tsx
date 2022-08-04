@@ -1,41 +1,62 @@
 import {
-    CaretLeftOutlined,
-    CaretRightOutlined,
-    HomeOutlined,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    PlusOutlined,
+    HomeOutlined, PlusOutlined,
     SearchOutlined,
     UnorderedListOutlined
 } from '@ant-design/icons';
 import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
-import React, { useState } from 'react';
+import { ItemType } from 'antd/lib/menu/hooks/useItems';
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import './LayoutPage.css';
 
 const { Header, Sider, Content } = Layout;
 type CollapseWidth = string | undefined;
 
+
 export const LayoutPage = () => {
     const [collapsed, setCollapsed] = useState(true);
-    const [collapsedWidth, setCollapsedWidth] = useState<CollapseWidth>(undefined)
+    const [collapsedWidth, setCollapsedWidth] = useState<CollapseWidth>(undefined);
 
-    const onBreakPoint = (crossBrakePoint: boolean) =>{
+    const menuItems: ItemType[] = [
+        {
+            key: '1',
+            icon: <HomeOutlined />,
+            label: 'Home',
+        },
+        {
+            key: '2',
+            icon: <UnorderedListOutlined />,
+            label: 'Tasks',
+        },
+        {
+            key: '3',
+            icon: <SearchOutlined />,
+            label: 'Search',
+        },
+        {
+            key: '4',
+            icon: <PlusOutlined />,
+            label: 'New',
+        }
+
+    ]
+
+    const onBreakPoint = (crossBrakePoint: boolean) => {
         console.log(crossBrakePoint);
         setCollapsed(crossBrakePoint);
 
-        if(crossBrakePoint){
+        if (crossBrakePoint) {
             setCollapsedWidth('0px');
-        }else {
+        } else {
             setCollapsedWidth(undefined);
         }
     }
 
     return (
-        <Layout className='layout-container' style={{maxHeight: '100vh'}}>
+        <Layout className='layout-container' style={{ maxHeight: '100vh' }}>
 
-            <Sider 
+            <Sider
                 collapsible
                 collapsed={collapsed}
                 breakpoint="md"
@@ -48,29 +69,7 @@ export const LayoutPage = () => {
                     theme="dark"
                     mode="inline"
                     defaultSelectedKeys={['1']}
-                    items={[
-                        {
-                            key: '1',
-                            icon: <HomeOutlined />,
-                            label: 'Home',
-                        },
-                        {
-                            key: '2',
-                            icon: <UnorderedListOutlined />,
-                            label: 'Tasks',
-                        },
-                        {
-                            key: '3',
-                            icon: <SearchOutlined />,
-                            label: 'Search',
-                        },
-                        {
-                            key: '4',
-                            icon: <PlusOutlined />,
-                            label: 'New',
-                        }
-                        
-                    ]}
+                    items={menuItems}
                 />
             </Sider>
 

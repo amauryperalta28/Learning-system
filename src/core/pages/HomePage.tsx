@@ -25,8 +25,7 @@ export const HomePage = () => {
         <>
             <div className="container-fluid">
                 <div className="row">
-                    <VideoTrainingList sectionName="Featured" />
-
+                    <VideoTrainingList key="featuredTrainingList" sectionName="Featured" />
                 </div>
 
                 <div className="row">
@@ -41,7 +40,7 @@ export const HomePage = () => {
                             <TaskTrainingList />
                         </TabPane>
                         <TabPane tab="DISCOVER" key="2">
-                            <VideoTrainingList />
+                            <VideoTrainingList key="discoverTrainingList" />
                         </TabPane>
                     </Tabs>
                 </div>

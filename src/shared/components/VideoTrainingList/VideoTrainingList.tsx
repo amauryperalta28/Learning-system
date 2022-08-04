@@ -7,6 +7,7 @@ export type Props = {
 }
 
 export const VideoTrainingList = ({ sectionName }: Props) => {
+    //TODO: Refactorizar para mover el consumo de la promesa en un componente aparte Featured o Discover
     const { videoTrainings } = useVideoTrainingList();
     
     return (
