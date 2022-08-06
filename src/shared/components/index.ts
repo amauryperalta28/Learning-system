@@ -1,3 +1,4 @@
+import { FeaturedTrainingList } from './FeaturedTrainingList/FeaturedTrainingList';
 import { TaskTrainingBox } from './TaskTrainingBox/TaskTrainingBox';
 import { TaskTrainingList } from './TaskTrainingList/TaskTrainingList';
 import { VideoTrainingBox } from './VideoTrainingBox/VideoTrainingBox';
@@ -7,5 +8,6 @@ export {
     TaskTrainingBox,
     TaskTrainingList,
     VideoTrainingBox,
-    VideoTrainingList
+    VideoTrainingList,
+    FeaturedTrainingList
 }

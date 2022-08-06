@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AppProviderContext, AppProviderDeps } from '../../../core/providers/AppProvider';
 import { VideoTraining } from '../../interfaces';
 
-export const useVideoTrainingList = () => {
+export const useFeaturedTrainingList = () => {
     const { videoTrainingManager } = useContext<AppProviderDeps>(AppProviderContext);
     const [videoTrainings, setVideoTrainings] = useState<Array<VideoTraining>>([]);
   

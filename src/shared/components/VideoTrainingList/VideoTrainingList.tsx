@@ -1,14 +1,13 @@
+import { VideoTraining } from '../../interfaces';
 import { VideoTrainingBox } from '../VideoTrainingBox/VideoTrainingBox';
-import { useVideoTrainingList } from './useVideoTrainingList';
 import './VideoTrainingList.css';
 
 export type Props = {
-    sectionName?: string
+    sectionName?: string;
+    videoTrainings: VideoTraining[]
 }
 
-export const VideoTrainingList = ({ sectionName }: Props) => {
-    //TODO: Refactorizar para mover el consumo de la promesa en un componente aparte Featured o Discover
-    const { videoTrainings } = useVideoTrainingList();
+export const VideoTrainingList = ({ sectionName, videoTrainings }: Props) => {
     
     return (
         <div className="container-fluid training-list">
@@ -21,9 +20,7 @@ export const VideoTrainingList = ({ sectionName }: Props) => {
                         </div>
                     ))
                 }
-
             </div>
-
         </div>
     )
 }

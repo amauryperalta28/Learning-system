@@ -2,7 +2,8 @@ import { Button, Space } from "antd";
 import Tabs from "antd/lib/tabs"
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { TaskTrainingList } from "../../shared/components";
+import { FeaturedTrainingList, TaskTrainingList } from "../../shared/components";
+import { DiscoverTrainingList } from "../../shared/components/DiscoverTrainingList/DiscoverTrainingList";
 import { VideoTrainingList as VideoTrainingList } from "../../shared/components/VideoTrainingList/VideoTrainingList"
 
 const { TabPane } = Tabs;
@@ -25,7 +26,7 @@ export const HomePage = () => {
         <>
             <div className="container-fluid">
                 <div className="row">
-                    <VideoTrainingList key="featuredTrainingList" sectionName="Featured" />
+                    <FeaturedTrainingList/>
                 </div>
 
                 <div className="row">
@@ -40,7 +41,7 @@ export const HomePage = () => {
                             <TaskTrainingList />
                         </TabPane>
                         <TabPane tab="DISCOVER" key="2">
-                            <VideoTrainingList key="discoverTrainingList" />
+                            <DiscoverTrainingList/>
                         </TabPane>
                     </Tabs>
                 </div>
