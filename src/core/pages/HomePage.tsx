@@ -1,10 +1,8 @@
-import { Button, Space } from "antd";
-import Tabs from "antd/lib/tabs"
+import Tabs from "antd/lib/tabs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FeaturedTrainingList, TaskTrainingList } from "../../shared/components";
 import { DiscoverTrainingList } from "../../shared/components/DiscoverTrainingList/DiscoverTrainingList";
-import { VideoTrainingList as VideoTrainingList } from "../../shared/components/VideoTrainingList/VideoTrainingList"
 
 const { TabPane } = Tabs;
 
