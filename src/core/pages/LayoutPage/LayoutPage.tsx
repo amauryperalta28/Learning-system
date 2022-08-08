@@ -84,7 +84,7 @@ export const LayoutPage = () => {
 
                 </Header>
                 <Content
-                    className="site-layout-content"
+                    className="layout-content"
                     style={{
                         margin: '24px 25px',
                         padding: 24,
