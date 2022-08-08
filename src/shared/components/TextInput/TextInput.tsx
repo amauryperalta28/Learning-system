@@ -1,3 +1,4 @@
+import { useField } from "formik";
 
 export type Props = {
     label: string;
@@ -6,14 +7,15 @@ export type Props = {
     placeholder?: string;
 }
 
-export const TextInput = ({label, id, name, placeholder = ''}:Props) => {
+export const TextInput = ({label, ...props}:Props) => {
+  const [field, meta] = useField(props);
   return (
     <div className="row g-3 align-items-center mt-3">
     <div className="col-3">
       <label
         className="col-form-label "
         style={{ fontSize: '20px', fontWeight: 'bold' }}
-        htmlFor={id}
+        htmlFor={props.id}
       >
         {label}
       </label>
@@ -21,11 +23,10 @@ export const TextInput = ({label, id, name, placeholder = ''}:Props) => {
     <div className="col-4">
       <input
         type="text"
-        id={id}
-        name={name}
-        className="form-control"
+        className={`form-control ${meta.touched && meta.error && 'is-invalid'}`}
         aria-describedby="title"
-        placeholder={placeholder}
+        {...field}
+        {...props}
       />
     </div>
   </div>
