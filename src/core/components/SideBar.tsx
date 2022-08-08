@@ -1,58 +1,72 @@
 import HomeOutlined from '@ant-design/icons/lib/icons/HomeOutlined'
-import MenuFoldOutlined from '@ant-design/icons/lib/icons/MenuFoldOutlined'
-import MenuUnfoldOutlined from '@ant-design/icons/lib/icons/MenuUnfoldOutlined'
 import PlusOutlined from '@ant-design/icons/lib/icons/PlusOutlined'
 import SearchOutlined from '@ant-design/icons/lib/icons/SearchOutlined'
 import UnorderedListOutlined from '@ant-design/icons/lib/icons/UnorderedListOutlined'
 import { Menu } from 'antd'
 import Sider from 'antd/lib/layout/Sider'
-import React, { useState } from 'react'
+import { ItemType } from 'antd/lib/menu/hooks/useItems'
+import { useState } from 'react'
 import './Sidebar.css'
 
+type CollapseWidth = string | undefined;
+
 export const SideBar = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
+    const [collapsedWidth, setCollapsedWidth] = useState<CollapseWidth>(undefined);
+    
+    const menuItems: ItemType[] = [
+        {
+            key: '1',
+            icon: <HomeOutlined />,
+            label: 'Home',
+        },
+        {
+            key: '2',
+            icon: <UnorderedListOutlined />,
+            label: 'Tasks',
+        },
+        {
+            key: '3',
+            icon: <SearchOutlined />,
+            label: 'Search',
+        },
+        {
+            key: '4',
+            icon: <PlusOutlined />,
+            label: 'New',
+        }
+
+    ];
+
+    const onBreakPoint = (crossBrakePoint: boolean) => {
+        console.log(crossBrakePoint);
+        setCollapsed(crossBrakePoint);
+
+        if (crossBrakePoint) {
+            setCollapsedWidth('0px');
+        } else {
+            setCollapsedWidth(undefined);
+        }
+    }
 
     return (
         <>
-            <Sider trigger={null} collapsible collapsed={collapsed}>
+            <Sider
+                collapsible
+                collapsed={collapsed}
+                breakpoint="md"
+                onBreakpoint={onBreakPoint}
+                onCollapse={(value) => setCollapsed(value)}
+                collapsedWidth={collapsedWidth}
+            >
                 <div className="logo" />
                 <Menu
                     theme="dark"
                     mode="inline"
                     defaultSelectedKeys={['1']}
-                    items={[
-                        {
-                            key: '1',
-                            icon: <HomeOutlined />,
-                            label: 'Home',
-                        },
-                        {
-                            key: '2',
-                            icon: <UnorderedListOutlined />,
-                            label: 'Tasks',
-                        },
-                        {
-                            key: '3',
-                            icon: <SearchOutlined />,
-                            label: 'Search',
-                        },
-                        {
-                            key: '4',
-                            icon: <PlusOutlined />,
-                            label: 'New',
-                        },
-                    ]}
+                    items={menuItems}
                 />
             </Sider>
-
-            <div className="sidebar-button">
-                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                    className: 'trigger',
-                    style: { position: 'relative' },
-                    onClick: () => setCollapsed(!collapsed),
-                })}
-
-            </div>
         </>
     )
 }
