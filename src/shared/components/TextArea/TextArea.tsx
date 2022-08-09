@@ -1,4 +1,4 @@
-import { useField } from 'formik';
+import { ErrorMessage, useField } from 'formik';
 import React from 'react'
 
 export type Props = {
@@ -29,6 +29,7 @@ export const TextArea = ({label, ...props}:Props) => {
         {...field}
         {...props}
       />
+      <ErrorMessage component="span"  name={props.name} className="invalid-feedback" />
     </div>
   </div>
   )

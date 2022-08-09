@@ -1,4 +1,4 @@
-import { useField } from "formik";
+import { ErrorMessage, useField } from "formik";
 
 export type Props = {
     label: string;
@@ -28,6 +28,7 @@ export const TextInput = ({label, ...props}:Props) => {
         {...field}
         {...props}
       />
+    <ErrorMessage component="span" name={props.name} className="invalid-feedback" />
     </div>
   </div>
   )
