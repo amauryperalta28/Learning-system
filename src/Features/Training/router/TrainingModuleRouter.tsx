@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { CreateTrainingPage } from '../pages/CreateTrainingPage';
+import { CreateTrainingPage } from '../pages/CreateTrainingPage/CreateTrainingPage';
 
 export const TrainingModuleRouter = () => {
   return (

@@ -1,5 +1,4 @@
 import { ErrorMessage, useField } from 'formik';
-import React from 'react'
 
 export type Props = {
     label: string;

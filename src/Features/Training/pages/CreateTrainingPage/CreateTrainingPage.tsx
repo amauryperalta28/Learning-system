@@ -1,48 +1,11 @@
-import { Form, Formik, FormikHelpers } from 'formik';
-import { TextArea } from '../../../shared/components/TextArea/TextArea';
-import { TextInput } from '../../../shared/components/TextInput/TextInput';
-import * as Yup from 'yup';
+import { TextArea } from '@shared/components/TextArea/TextArea';
+import { TextInput } from '@shared/components/TextInput/TextInput';
+import { Form, Formik } from 'formik';
 
-interface Values {
-  title: string;
-  category: string;
-  length: string;
-  instructor: string;
-  videoUrl: string;
-  description: string;
-}
+import { useCreateTrainingPage } from './useCreateTrainingPage';
 
 export const CreateTrainingPage = () => {
-  const initialValues = {
-    title: '',
-    category: '',
-    length: '',
-    instructor: '',
-    videoUrl: '',
-    description: '',
-  };
-  const onSubmit = (values: Values) => {
-    console.log({createTrainingForm: values})
-  };
-
-  const validationSchema = Yup.object({
-    title: Yup.string()
-      .max(80, 'El máximo permitido es de 80')
-      .required('Este campo es requerido'),
-    category: Yup.string()
-      .max(30, 'El máximo permitido es de 30')
-      .required('Este campo es requerido'),
-    length: Yup.number().required('Este campo es requerido'),
-    instructor: Yup.string()
-      .max(50, 'El máximo permitido es de 50')
-      .required('Este campo es requerido'),
-    videoUrl: Yup.string()
-      .required('Este campo es requerido')
-      .url('Debe ser una url válida'),
-    description: Yup.string()
-      .max(100, 'El máximo permitido es de 100')
-      .required('Este campo es requerido'),
-  });
+  const {initialValues, validationSchema, onSubmit} = useCreateTrainingPage();
 
   return (
     <div>
