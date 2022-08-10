@@ -4,6 +4,10 @@ import { VideoTraining } from '../interfaces';
 export class VideoTrainingRepository
   implements VideoTrainingRepositoryContract
 {
+  saveTraining(training: VideoTraining): Promise<void> {
+    return Promise.resolve();
+  }
+
   getTrainings(): Promise<VideoTraining[]> {
 
     const trainings: VideoTraining[] = [

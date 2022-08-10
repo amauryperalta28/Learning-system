@@ -15,11 +15,11 @@ interface ResponseResult<T> {
   isLoading: boolean;
 }
 
-interface ErrorResponse {
+export interface ErrorResponse {
   message: string;
 }
 
-const useHttp = <T extends object>() => {
+export const useHttp = <T extends object>() => {
   const [responseResult, setResponseResult] = useState<ResponseResult<T>>({
     data: undefined,
     isError: false,

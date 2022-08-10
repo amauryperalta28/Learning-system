@@ -20,4 +20,8 @@ export class VideoTrainingManager {
   getTrainings(): Promise<VideoTraining[]> {
     return this.taskRepository.getTrainings();
   }
+
+  saveTraining(training: VideoTraining): Promise<void> {
+    return this.taskRepository.saveTraining(training);
+  }
 }

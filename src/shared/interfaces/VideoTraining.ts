@@ -1,7 +1,8 @@
 export interface VideoTraining {
-    id: number;
+    id?: number;
     title: string;
     videoUrl: string;
     estimatedTimeInMinutes: number;
     authorName: string;
+    description?: string;
 }

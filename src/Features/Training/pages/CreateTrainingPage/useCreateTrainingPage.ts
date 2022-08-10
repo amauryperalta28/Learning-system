@@ -1,6 +1,11 @@
 import * as Yup from 'yup';
+import { ErrorResponse, useHttp } from '@shared/hooks/useHttp';
+import { useContext, useCallback } from 'react';
+import { AppProviderContext } from '@core/providers/AppProvider';
+import { useNavigate } from 'react-router-dom';
+import { VideoTraining } from '@shared/interfaces';
 
-interface Values {
+interface CreateTrainingValues {
   title: string;
   category: string;
   length: string;
@@ -18,8 +23,43 @@ export const useCreateTrainingPage = () => {
     videoUrl: '',
     description: '',
   };
-  const onSubmit = (values: Values) => {
-    console.log({ createTrainingForm: values });
+
+  const { execute: executeCreateTraining } = useHttp();
+  const { videoTrainingManager } = useContext(AppProviderContext);
+  const navigate = useNavigate();
+
+  const onSubmit = async (values: CreateTrainingValues): Promise<boolean> => {
+    const training: VideoTraining = buildTraining(values);
+
+    handleSaveTraining(training);
+
+    return true;
+  
+  };
+
+  const handleSaveTraining = useCallback((training: VideoTraining) => {
+ 
+    executeCreateTraining({
+      asyncFunction: () => {
+        return videoTrainingManager.saveTraining(training);
+      },
+      onSuccess: () => {
+        navigate('/', { replace: true });
+      },
+      onError: (e: ErrorResponse) => {
+        console.error(e);
+      },
+    });
+  },[videoTrainingManager]);
+
+  const buildTraining = (training: CreateTrainingValues) => {
+    return {
+      title: training.title,
+      videoUrl: training.videoUrl,
+      estimatedTimeInMinutes: Number(training.length),
+      authorName: training.title,
+      description: training.description,
+    };
   };
 
   const validationSchema = Yup.object({
@@ -44,7 +84,6 @@ export const useCreateTrainingPage = () => {
   return {
     validationSchema,
     onSubmit,
-    initialValues
-
+    initialValues,
   };
 };

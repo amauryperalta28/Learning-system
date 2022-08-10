@@ -1,5 +1,4 @@
-import { TextArea } from '@shared/components/TextArea/TextArea';
-import { TextInput } from '@shared/components/TextInput/TextInput';
+import { TextArea, TextInput } from '@shared/components';
 import { Form, Formik } from 'formik';
 
 import { useCreateTrainingPage } from './useCreateTrainingPage';
