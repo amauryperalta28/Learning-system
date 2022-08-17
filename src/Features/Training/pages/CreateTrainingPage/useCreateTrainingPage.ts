@@ -1,5 +1,7 @@
 import { AppProviderContext } from '@core/providers/AppProvider';
+import { useToast } from '@shared/hooks';
 import { useHttp } from '@shared/hooks/useHttp';
+import { useLoading } from '@shared/hooks/useLoading';
 import { VideoTraining } from '@shared/interfaces';
 import { useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -28,6 +30,8 @@ export const useCreateTrainingPage = () => {
   const { execute: executeCreateTraining } = useHttp();
   const { videoTrainingManager } = useContext(AppProviderContext);
   const navigate = useNavigate();
+  const  {showSuccess, showError} = useToast();
+  const { showLoading, hideLoading} = useLoading();
 
   const onSubmit = async (values: CreateTrainingValues): Promise<boolean> => {
     const training: VideoTraining = buildTraining(values);
@@ -41,15 +45,19 @@ export const useCreateTrainingPage = () => {
     (training: VideoTraining) => {
       executeCreateTraining({
         asyncFunction: () => {
+          showLoading();
           return videoTrainingManager.saveTraining(training);
         },
         onSuccess: () => {
-          toast.success('Training was created succesfully');
+          showSuccess('Training was created succesfully');
 
           navigate('/', { replace: true });
         },
         onError: (e: any) => {
-          toast.error(e.message);
+          showError(e.message);
+        },
+        onFinally:()=>{
+          hideLoading();
         }
       });
     },
@@ -82,7 +90,6 @@ export const useCreateTrainingPage = () => {
       .url('Debe ser una url válida'),
     description: Yup.string()
       .max(100, 'El máximo permitido es de 100')
-      .required('Este campo es requerido'),
   });
 
   return {

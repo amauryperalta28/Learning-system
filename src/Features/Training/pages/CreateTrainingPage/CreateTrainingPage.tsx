@@ -1,4 +1,5 @@
 import { TextArea, TextInput } from '@shared/components';
+import { NumberInput } from '@shared/components/NumberInput/NumberInput';
 import { Form, Formik } from 'formik';
 
 import { useCreateTrainingPage } from './useCreateTrainingPage';
@@ -37,7 +38,7 @@ export const CreateTrainingPage = () => {
                 placeholder="Power platform"
               />
 
-              <TextInput id="length" name="length" label="Length" />
+              <NumberInput id="length" name="length" label="Length" />
 
               <TextInput
                 id="instructor"

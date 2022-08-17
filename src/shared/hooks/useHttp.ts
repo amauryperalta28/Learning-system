@@ -59,6 +59,10 @@ export const useHttp = <T extends object>() => {
 
           return false;
         }).finally(()=>{
+
+          if(onFinally){
+            onFinally();
+          }
             setResponseResult({ ...responseResult, isLoading: false });
         });
     },
