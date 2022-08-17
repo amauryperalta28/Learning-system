@@ -53,9 +53,8 @@ export const useHttp = <T extends object>() => {
         .catch(({ response }: AxiosError<ErrorResponse>) => {
           const error = response?.data || undefined;
           setResponseResult({ ...responseResult, isError: true, data: error, isLoading: false });
-
           if(onError){
-            onError(response?.data);
+            onError(response?.data || {message: 'La respuesta esperada es incorrecta'});
           }
 
           return false;

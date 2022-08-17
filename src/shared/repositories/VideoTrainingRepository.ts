@@ -1,3 +1,4 @@
+import { http } from '@shared/helpers';
 import { VideoTrainingRepositoryContract } from '../contracts/VideoTrainingsRepositoryContract';
 import { VideoTraining } from '../interfaces';
 
@@ -5,11 +6,10 @@ export class VideoTrainingRepository
   implements VideoTrainingRepositoryContract
 {
   saveTraining(training: VideoTraining): Promise<void> {
-    return Promise.resolve();
+    return http.post('/trainings', training);
   }
 
   getTrainings(): Promise<VideoTraining[]> {
-
     const trainings: VideoTraining[] = [
       {
         id: new Date().getTime(),

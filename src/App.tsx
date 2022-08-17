@@ -1,10 +1,16 @@
 import 'antd/dist/antd.css';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import { AppRouter } from './AppRouter';
 import './index.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 const  App = () => {
   return (
-    <AppRouter></AppRouter>
+    <>
+    <AppRouter/>
+    <ToastContainer position="bottom-right" />
+    </>
   )
 }
 

@@ -1,9 +1,10 @@
-import * as Yup from 'yup';
-import { ErrorResponse, useHttp } from '@shared/hooks/useHttp';
-import { useContext, useCallback } from 'react';
 import { AppProviderContext } from '@core/providers/AppProvider';
-import { useNavigate } from 'react-router-dom';
+import { useHttp } from '@shared/hooks/useHttp';
 import { VideoTraining } from '@shared/interfaces';
+import { useCallback, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 
 interface CreateTrainingValues {
   title: string;
@@ -34,23 +35,26 @@ export const useCreateTrainingPage = () => {
     handleSaveTraining(training);
 
     return true;
-  
   };
 
-  const handleSaveTraining = useCallback((training: VideoTraining) => {
- 
-    executeCreateTraining({
-      asyncFunction: () => {
-        return videoTrainingManager.saveTraining(training);
-      },
-      onSuccess: () => {
-        navigate('/', { replace: true });
-      },
-      onError: (e: ErrorResponse) => {
-        console.error(e);
-      },
-    });
-  },[videoTrainingManager]);
+  const handleSaveTraining = useCallback(
+    (training: VideoTraining) => {
+      executeCreateTraining({
+        asyncFunction: () => {
+          return videoTrainingManager.saveTraining(training);
+        },
+        onSuccess: () => {
+          toast.success('Training was created succesfully');
+
+          navigate('/', { replace: true });
+        },
+        onError: (e: any) => {
+          toast.error(e.message);
+        }
+      });
+    },
+    [videoTrainingManager]
+  );
 
   const buildTraining = (training: CreateTrainingValues) => {
     return {
