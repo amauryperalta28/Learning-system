@@ -2,60 +2,58 @@ import HomeOutlined from '@ant-design/icons/lib/icons/HomeOutlined';
 import PlusOutlined from '@ant-design/icons/lib/icons/PlusOutlined';
 import SearchOutlined from '@ant-design/icons/lib/icons/SearchOutlined';
 import UnorderedListOutlined from '@ant-design/icons/lib/icons/UnorderedListOutlined';
-import { ItemType } from 'antd/lib/menu/hooks/useItems';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
+import type { MenuProps } from 'antd/es/menu';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 type CollapseWidth = string | undefined;
 
+type MenuItem = Required<MenuProps>['items'][number];
+
 const MenuOptions = {
-    home: '1',
-    tasks: '2',
-    search: '3',
-    newTraining: '4'
-}
+  home: '1',
+  tasks: '2',
+  search: '3',
+  newTraining: '4',
+};
 
 export const useLayoutPage = () => {
   const [collapsed, setCollapsed] = useState(true);
-  const [collapsedWidth, setCollapsedWidth] = useState<CollapseWidth>(undefined);
-  const Navigate = useNavigate();
+  const [collapsedWidth, setCollapsedWidth] =
+    useState<CollapseWidth>(undefined);
 
-  const menuItems: ItemType[] = [
-    {
-      key: MenuOptions.home,
-      icon: <HomeOutlined />,
-      label: 'Home',
-    },
-    {
-      key: MenuOptions.tasks,
-      icon: <UnorderedListOutlined />,
-      label: 'Tasks',
-    },
-    {
-      key: MenuOptions.search,
-      icon: <SearchOutlined />,
-      label: 'Search',
-    },
-    {
-      key: MenuOptions.newTraining,
-      icon: <PlusOutlined />,
-      label: 'New',
-    },
+  const getItem = (
+    label: React.ReactNode,
+    key?: React.Key | null,
+    icon?: React.ReactNode,
+    children?: MenuItem[]
+  ): MenuItem => {
+    return {
+      key,
+      icon,
+      children,
+      label,
+    } as MenuItem;
+  };
+
+  const menuItems: MenuItem[] = [
+    getItem(<NavLink to="/">Home</NavLink>, MenuOptions.home, <HomeOutlined />),
+    getItem(
+      <NavLink to="/">Tasks</NavLink>,
+      MenuOptions.tasks,
+      <UnorderedListOutlined />
+    ),
+    getItem(
+      <NavLink to="/">Search</NavLink>,
+      MenuOptions.search,
+      <SearchOutlined />
+    ),
+    getItem(
+      <NavLink to="/trainings/create">New</NavLink>,
+      MenuOptions.newTraining,
+      <PlusOutlined />
+    ),
   ];
-
-  const onClickMenuItem = (key: string)=>{
-    let routes = new Map<string, string>();
-    routes.set(MenuOptions.home, '/');
-    routes.set(MenuOptions.newTraining, '/trainings/create');
-
-    if(!routes.has(key)){
-       return Navigate('/');
-    }
-    
-    const path = routes.get(key)!;
-//  debugger;
-    return Navigate(path);
-  }
 
   const onBreakPoint = (crossBrakePoint: boolean) => {
     setCollapsed(crossBrakePoint);
@@ -72,7 +70,6 @@ export const useLayoutPage = () => {
   return {
     onBreakPoint,
     onCollapse,
-    onClickMenuItem,
     collapsed,
     collapsedWidth,
     menuItems,

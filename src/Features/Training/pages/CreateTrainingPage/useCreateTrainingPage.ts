@@ -46,7 +46,7 @@ export const useCreateTrainingPage = () => {
           return videoTrainingManager.saveTraining(training);
         },
         onSuccess: () => {
-          showSuccess('Training was created succesfully');
+          showSuccess('Training created successfully');
 
           navigate('/', { replace: true });
         },

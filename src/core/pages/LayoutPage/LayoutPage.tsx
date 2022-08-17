@@ -12,7 +12,6 @@ export const LayoutPage = () => {
   const { collapsed, 
     onBreakPoint, 
     onCollapse,
-    onClickMenuItem, 
     collapsedWidth, 
     menuItems } =  useLayoutPage();
 
@@ -32,9 +31,6 @@ export const LayoutPage = () => {
           mode="inline"
           defaultSelectedKeys={['1']}
           items={menuItems}
-          onClick={ (e)=> {
-            onClickMenuItem(e.key);
-          } }
         />
       </Sider>
 
