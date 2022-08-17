@@ -1,11 +1,8 @@
 import { AppProviderContext } from '@core/providers/AppProvider';
-import { useToast } from '@shared/hooks';
-import { useHttp } from '@shared/hooks/useHttp';
-import { useLoading } from '@shared/hooks/useLoading';
+import { useHttp, useLoading, useToast } from '@shared/hooks';
 import { VideoTraining } from '@shared/interfaces';
 import { useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 interface CreateTrainingValues {

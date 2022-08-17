@@ -1,4 +1,6 @@
+import { AppLoading } from './AppLoading/AppLoading';
 import { FeaturedTrainingList } from './FeaturedTrainingList/FeaturedTrainingList';
+import { NumberInput } from './NumberInput/NumberInput';
 import { TaskTrainingBox } from './TaskTrainingBox/TaskTrainingBox';
 import { TaskTrainingList } from './TaskTrainingList/TaskTrainingList';
 import { TextArea } from './TextArea/TextArea';
@@ -14,4 +16,6 @@ export {
     FeaturedTrainingList,
     TextInput,
     TextArea,
+    NumberInput,
+    AppLoading
 }

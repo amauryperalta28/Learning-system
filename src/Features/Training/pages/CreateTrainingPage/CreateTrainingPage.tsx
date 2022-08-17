@@ -1,5 +1,5 @@
-import { TextArea, TextInput } from '@shared/components';
-import { NumberInput } from '@shared/components/NumberInput/NumberInput';
+import { NumberInput, TextArea, TextInput } from '@shared/components';
+
 import { Form, Formik } from 'formik';
 
 import { useCreateTrainingPage } from './useCreateTrainingPage';

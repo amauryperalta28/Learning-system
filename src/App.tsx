@@ -1,4 +1,4 @@
-import { AppLoading } from '@shared/components/LoadingComponent/AppLoading';
+import { AppLoading } from '@shared/components';
 import 'antd/dist/antd.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
