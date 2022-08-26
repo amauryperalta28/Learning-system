@@ -3,17 +3,19 @@ import Menu from 'antd/lib/menu';
 import { Outlet } from 'react-router-dom';
 import './LayoutPage.css';
 import { useLayoutPage } from './useLayoutPage';
-import MenuInfo from 'antd/lib/menu/index';
-
 
 const { Header, Sider, Content } = Layout;
 
+export enum Pages {
+  home = '1',
+  tasks = '2',
+  search = '3',
+  new = '4',
+}
+
 export const LayoutPage = () => {
-  const { collapsed, 
-    onBreakPoint, 
-    onCollapse,
-    collapsedWidth, 
-    menuItems } =  useLayoutPage();
+  const { collapsed, onBreakPoint, onCollapse, collapsedWidth, menuItems, selectedMenu } =
+    useLayoutPage();
 
   return (
     <Layout className="layout-container" style={{ maxHeight: '100vh' }}>
@@ -29,7 +31,7 @@ export const LayoutPage = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['1']}
+          selectedKeys={[selectedMenu]}
           items={menuItems}
         />
       </Sider>

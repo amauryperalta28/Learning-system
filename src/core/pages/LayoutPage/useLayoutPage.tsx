@@ -2,10 +2,13 @@ import HomeOutlined from '@ant-design/icons/lib/icons/HomeOutlined';
 import PlusOutlined from '@ant-design/icons/lib/icons/PlusOutlined';
 import SearchOutlined from '@ant-design/icons/lib/icons/SearchOutlined';
 import UnorderedListOutlined from '@ant-design/icons/lib/icons/UnorderedListOutlined';
+import { useSidebarSelectedMenu } from '@core/hooks/useSidebarSelectedMenu';
 
 import type { MenuProps } from 'antd/es/menu';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Pages } from './LayoutPage';
+
 type CollapseWidth = string | undefined;
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -19,14 +22,14 @@ const MenuOptions = {
 
 export const useLayoutPage = () => {
   const [collapsed, setCollapsed] = useState(true);
-  const [collapsedWidth, setCollapsedWidth] =
-    useState<CollapseWidth>(undefined);
+  const [collapsedWidth, setCollapsedWidth] =  useState<CollapseWidth>(undefined);
+  const { setActive, selectedMenu } = useSidebarSelectedMenu();
 
   const getItem = (
     label: React.ReactNode,
     key?: React.Key | null,
     icon?: React.ReactNode,
-    children?: MenuItem[]
+    children?: MenuItem[],
   ): MenuItem => {
     return {
       key,
@@ -36,24 +39,24 @@ export const useLayoutPage = () => {
     } as MenuItem;
   };
 
-  const menuItems: MenuItem[] = [
-    getItem(<NavLink to="/">Home</NavLink>, MenuOptions.home, <HomeOutlined />),
+  const menuItems: MenuItem[]  = useMemo(()=> [
+    getItem(<Link to="/" onClick={ () => setActive(Pages.home)}>Home</Link>, MenuOptions.home, <HomeOutlined />),
     getItem(
-      <NavLink to="/">Tasks</NavLink>,
+      <Link to="/tasks" onClick={ () => setActive(Pages.tasks)}>Tasks</Link>,
       MenuOptions.tasks,
       <UnorderedListOutlined />
     ),
     getItem(
-      <NavLink to="/">Search</NavLink>,
+      <Link to="/search" onClick={ () => setActive(Pages.tasks)}>Search</Link>,
       MenuOptions.search,
       <SearchOutlined />
     ),
     getItem(
-      <NavLink to="/trainings/create">New</NavLink>,
+      <Link to="/trainings/create" onClick={ () => setActive(Pages.new)}>New</Link>,
       MenuOptions.newTraining,
       <PlusOutlined />
     ),
-  ];
+  ], [])
 
   const onBreakPoint = (crossBrakePoint: boolean) => {
     setCollapsed(crossBrakePoint);
@@ -67,11 +70,13 @@ export const useLayoutPage = () => {
 
   const onCollapse = (value: boolean) => setCollapsed(value);
 
+
   return {
     onBreakPoint,
     onCollapse,
     collapsed,
     collapsedWidth,
     menuItems,
+    selectedMenu
   };
 };

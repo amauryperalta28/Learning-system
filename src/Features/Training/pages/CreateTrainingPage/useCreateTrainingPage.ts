@@ -27,8 +27,8 @@ export const useCreateTrainingPage = () => {
   const { execute: executeCreateTraining } = useHttp();
   const { videoTrainingManager } = useContext(AppProviderContext);
   const navigate = useNavigate();
-  const  {showSuccess, showError} = useToast();
-  const { showLoading, hideLoading} = useLoading();
+  const { showSuccess, showError } = useToast();
+  const { showLoading, hideLoading } = useLoading();
 
   const onSubmit = async (values: CreateTrainingValues): Promise<boolean> => {
     const training: VideoTraining = buildTraining(values);
@@ -53,9 +53,9 @@ export const useCreateTrainingPage = () => {
         onError: (e: any) => {
           showError(e.message);
         },
-        onFinally:()=>{
+        onFinally: () => {
           hideLoading();
-        }
+        },
       });
     },
     [videoTrainingManager]
@@ -85,8 +85,7 @@ export const useCreateTrainingPage = () => {
     videoUrl: Yup.string()
       .required('Este campo es requerido')
       .url('Debe ser una url válida'),
-    description: Yup.string()
-      .max(100, 'El máximo permitido es de 100')
+    description: Yup.string().max(100, 'El máximo permitido es de 100'),
   });
 
   return {
