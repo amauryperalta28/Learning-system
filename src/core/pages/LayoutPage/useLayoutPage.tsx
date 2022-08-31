@@ -42,12 +42,12 @@ export const useLayoutPage = () => {
   const menuItems: MenuItem[]  = useMemo(()=> [
     getItem(<Link to="/" onClick={ () => setActive(Pages.home)}>Home</Link>, MenuOptions.home, <HomeOutlined />),
     getItem(
-      <Link to="/tasks" onClick={ () => setActive(Pages.tasks)}>Tasks</Link>,
+      <Link to="/trainings/tasks" onClick={ () => setActive(Pages.tasks)}>Tasks</Link>,
       MenuOptions.tasks,
       <UnorderedListOutlined />
     ),
     getItem(
-      <Link to="/search" onClick={ () => setActive(Pages.tasks)}>Search</Link>,
+      <Link to="/trainings/search" onClick={ () => setActive(Pages.search)}>Search</Link>,
       MenuOptions.search,
       <SearchOutlined />
     ),
